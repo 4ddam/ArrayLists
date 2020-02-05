@@ -25,21 +25,23 @@ public class Hangman
 
         Scanner input = new Scanner (System.in);
 
-        System.out.println("\f        HANGMAN\n");
+        System.out.println("\f        HANGMAN\n\n");
+
+        System.out.print("Player 1 -  Enter the word for player 2 to guess: ");
+        stringWord = input.nextLine().toLowerCase();
 
         while (true) {
-            System.out.print("Player 1 -  Enter the word for player 2 to guess: ");
-            stringWord = input.nextLine().toLowerCase();
-
             if (stringWord.matches("([a-zA-Z])") || !(stringWord.matches("([\\S])"))) {
                 if (stringWord.trim().isEmpty()) {
-                    System.out.print("The word can only contain letters and spaces\f");
+                    System.out.print("\f        HANGMAN\n\nThe word can only contain letters and spaces\n");
                 } else 
                     break;
             } else {
-                System.out.print("The word can only contain letters and spaces\f");
+                System.out.print("\f        HANGMAN\n\nThe word can only contain letters and spaces\n");
             }
-        }
 
+            System.out.print("Player 1 -  Enter the word for player 2 to guess: ");
+            stringWord = input.nextLine().toLowerCase();
+        }
     }
 }
