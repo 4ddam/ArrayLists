@@ -1,4 +1,4 @@
-/*
+    /*
  * Design the simple game hangman. Ten misses.
  * Hint, make two arrays one with the word and the other with incorrect guesses.
  * 
@@ -33,7 +33,7 @@ public class Hangman
         stringWord = input.nextLine().toLowerCase();
 
         while (true) {
-            if (stringWord.matches("([a-zA-Z])") || !(stringWord.matches("([\\S])"))) {
+            if (stringWord.matches("^[\\p{L} .'-]+$")) {
                 if (stringWord.trim().isEmpty()) {
                     System.out.print("\f        HANGMAN\n\nThe word can only contain letters and spaces\n");
                 } else 

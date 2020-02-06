@@ -36,11 +36,23 @@ public class FinnzDatingService
         System.out.print("\f      FINNZ DATING SERVICE\n\n");
 
         for (int i = 0; i < Integer.parseInt(response); i++) {
-            System.out.print("What is the name of cousin #" + (i+1) + "? ");
-            nameList.add(input.nextLine().toLowerCase());
+            while (true) {
+                System.out.print("What is the name of cousin #" + (i+1) + "? ");
+                String response1 = input.nextLine();
+                if (response1.toLowerCase().matches("^[\\p{L} .'-]+$")) {
+                    nameList.add(response1.toLowerCase());
+                    System.out.print("\f      FINNZ DATING SERVICE\n\n");
+                    break;
+                } else {
+                    System.out.print("\f        FINNZ DATING SERVICE\n\nThe name can only contain letters!\n\n");
+                }   
+
+            }
         }
 
-        printArray(nameList);
+        System.out.print("\f      FINNZ DATING SERVICE\n\nList of names:\n");
+        printArray(nameList);      
+        System.out.println();
 
         while (true) {
             System.out.print("Finn, who is your best looking cousin? ");
@@ -49,14 +61,47 @@ public class FinnzDatingService
                 nameList.remove(response);
                 break;
             } else {
-                System.out.print("NOT A PERSON\n\n");
+                System.out.print("\f      FINNZ DATING SERVICE\n\nList of names:\n");
+                printArray(nameList);      
+                System.out.println();
+                System.out.print("The name can only be one in the list!\n\n");
             }
         }
-        printArray(nameList);
-        
+        System.out.print("\f      FINNZ DATING SERVICE\n\nList of names:\n");    
         nameList.add("Jenifer Lopez");
-        
         printArray(nameList);
+        System.out.println();
+
+        while (true) {
+            System.out.print("Finn, which cousin has the best teeth? ");
+            response = input.nextLine().toLowerCase();
+            if (nameList.contains(response)) {
+                break;
+            } else {
+                System.out.print("\f      FINNZ DATING SERVICE\n\nList of names:\n");
+                printArray(nameList);      
+                System.out.println();
+                System.out.print("The name can only be one in the list!\n\n");
+            }
+        }
+
+        System.out.print("\f      FINNZ DATING SERVICE\n\nList of names:\n");
+        printArray(nameList);   
+        System.out.println();
+
+        while (true) {
+            System.out.print("What is your sisters name? ");
+            String response2 = input.nextLine();
+            if (response2.toLowerCase().matches("^[\\p{L} .'-]+$")) {
+                nameList.set(nameList.indexOf(response), response2);
+
+                break;
+            } else {
+                System.out.print("\f        FINNZ DATING SERVICE\n\nThe name can only contain letters!\n\n");
+            }   
+
+        }
+        
         
     }
 
