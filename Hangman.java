@@ -18,6 +18,7 @@ public class Hangman
         int guessesLeft = 10;
         String stringWord;
         String guess;
+        int guessNumber = 0;
         boolean end = false;
 
         ArrayList<Character> word = new ArrayList<Character>();
@@ -86,7 +87,8 @@ public class Hangman
                     }                    
                     System.out.print("\f        HANGMAN\n\nIncorrect Guess\n\n");
                 }
-                guessedLetters.add(guess.charAt(0));               
+                guessedLetters.add(guess.charAt(0));   
+                guessNumber++;
             } else {
                 System.out.print("\f        HANGMAN\n\nNot a valid guess. That is already guessed or that is not one letter\n\n");
             }
@@ -97,19 +99,27 @@ public class Hangman
 
         System.out.print("Guesses Left: " + guessesLeft + "\nLetters Guessed: ");
 
-        for (char letters: guessedLetters) {
-            System.out.print(letters + ", ");
+        for (int i = 0; i < guessedLetters.size(); i++) {
+            if (i != (guessNumber - 1)) {
+                System.out.print(guessedLetters.get(i) + ", ");
+            } else {
+                System.out.print(guessedLetters.get(i));
+            }
         }
 
         System.out.print("\n\n");
 
-        for (char character: display) {
-            System.out.print(character + " ");
-        }
-
         if (guessesLeft < 1) {
+            System.out.print("Answer: ");
+            for (char letters: word) {
+                System.out.print(letters + " ");
+            }
+
             System.out.print("\n\nYou ran out of guesses!");
         } else {
+            for (char letters: word) {
+                System.out.print(letters + " ");
+            }
             System.out.print("\n\nYou win!");
         }
     }
